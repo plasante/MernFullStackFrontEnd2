@@ -17,14 +17,10 @@ import ReactDOM from 'react-dom';
 
 class App extends React.Component {
 
-  constructor(props) {
-    super(props);
+  state = { latitude: null, errorMessage: '' };
 
-    this.state =  {
-      latitude: null,
-      errorMessage: ''
-    };
-
+  componentDidMount() {
+    console.log('*** componentDidMount, Good place to data loading');
     window.navigator.geolocation.getCurrentPosition(
       (position) => {
         this.setState({ latitude: position.coords.latitude });
@@ -35,12 +31,8 @@ class App extends React.Component {
     );
   }
 
-  componentDidMount() {
-    console.log('Component mounted, Good place to data loading');
-  }
-
   componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log('Good place to do more data loading when state/props change.')
+    console.log('*** componentDidUpdate, Good place to do more data loading when state/props change.')
   }
 
   componentWillUnmount() {
