@@ -35,6 +35,18 @@ class App extends React.Component {
     );
   }
 
+  componentDidMount() {
+    console.log('Component mounted, Good place to data loading');
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log('Good place to do more data loading when state/props change.')
+  }
+
+  componentWillUnmount() {
+      console.log('Component will unmount, Good place to clean up resources');
+  }
+
   render() {
     if (this.state.errorMessage && !this.state.latitude) {
       return <div>{this.state.errorMessage}</div>
