@@ -20,8 +20,8 @@ class App extends Component {
 
   state = { latitude: null, errorMessage: '' };
 
+  // This gets rendered once the component finished loading up on the screen
   componentDidMount() {
-    console.log('*** componentDidMount, Good place to data loading');
     window.navigator.geolocation.getCurrentPosition(
       (position) => {
         this.setState({ latitude: position.coords.latitude });
@@ -32,6 +32,7 @@ class App extends Component {
     );
   }
 
+  // This gets called any time this.setState is called
   componentDidUpdate(prevProps, prevState, snapshot) {
     console.log('*** componentDidUpdate, Good place to do more data loading when state/props change.')
   }
